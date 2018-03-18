@@ -11,7 +11,8 @@ public class Main {
 
         int numPokemon = scan.nextInt();
 
-        //SET THE SIZE OF POKEDEX TO numPokemon
+        //initialize pokemon array with size of numPokemon
+        Pokemon[] pokemonArray = new Pokemon[numPokemon];
 
         System.out.print("\nYour new Pokedex can hold " + numPokemon + " Pokemon. ");
         System.out.println("Let's start using it!\n");
