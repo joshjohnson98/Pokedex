@@ -50,8 +50,8 @@ public class Main {
                         //Validate user input below? If so, implement method similar to "option"
                         System.out.print("\nPlease enter the Pokemon’s Species: ");
                         species = scan.next();
-                        boolean success = myPokedex.addPokemon(species);
-                        if (!success){
+                        boolean addSuccess = myPokedex.addPokemon(species);
+                        if (!addSuccess){
                             if (myPokedex.getDuplicateFound()){
                                 System.out.println("Duplicate");
                             }
@@ -78,8 +78,14 @@ public class Main {
                     case 4: //evolve pokemon
                         //Validate user input below? If so, implement method similar to "option"
                         System.out.print("\nPlease enter the Pokemon of interest: ");
-                        //if returns false, print "Missing"
-                        //(A Pokemon is missing from the Pokedex)
+                        species = scan.next();
+                        boolean evolveSuccess = myPokedex.evolvePokemon(species);
+                        if (!evolveSuccess){
+                            System.out.println("Missing");
+                        }
+                        else{
+                            System.out.println(species + " has evolved!");
+                        }
                         break;
                     case 5: //sort pokemon
 

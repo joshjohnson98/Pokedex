@@ -104,8 +104,18 @@ public class Pokedex implements PokedexInterface{
         If not, return false.
     */
     public boolean evolvePokemon(String species){
+        //First, find what the index of your Pokemon of interest is, using "species"
+        int index = getIndex(species);
 
-        return false; //remove later
+        if (index==-1){
+            return false; //Pokemon is missing
+        }
+        else {
+            pokemonArray[index].setAttack(2*pokemonArray[index].getAttack()); //double attack
+            pokemonArray[index].setDefense(4*pokemonArray[index].getDefense()); //quadruple defense
+            pokemonArray[index].setSpeed(3*pokemonArray[index].getSpeed()); //triple speed
+            return true;
+        }
     }
 
     public int getIndex(String species){
@@ -114,7 +124,7 @@ public class Pokedex implements PokedexInterface{
                 return ii;
             }
         }
-        return -1; //Pokemon is missing (checkStats)
+        return -1; //Pokemon is missing (checkStats and evolvePokemon)
     }
 
 
