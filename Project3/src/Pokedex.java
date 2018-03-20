@@ -1,6 +1,7 @@
 public class Pokedex implements PokedexInterface{
 
     private Pokemon[] pokemonArray;
+    private boolean duplicateFound = false;
 
     //constructor
     public Pokedex(int numPokemon){
@@ -47,22 +48,32 @@ public class Pokedex implements PokedexInterface{
         Pokemon nextPokemon = new Pokemon(species);
         //check number of pokemon in array to find next open spot in array
         int nullCount = 0;
+        duplicateFound = false;
         for (int ii = 0; ii <= pokemonArray.length-1; ii++){
             if (pokemonArray[ii] == null){
                 nullCount++;
             }
+            if (pokemonArray[ii]!=null && pokemonArray[ii].getSpecies().equals(species)){
+                duplicateFound = true;
+            }
         }
         int numFilledSpaces = pokemonArray.length-nullCount;
 
-        //add to next spot in pokemonArray
-
-        //if duplicate, don't add
-            //return false;
-        //else if numFilledSpaces == pokemonArray.length, don't add
-            //return false;
-        //else, add
+        //add to next spot in pokemonArray if not duplicate and array isn't full
+        if (duplicateFound){
+            return false; //don't add
+        }
+        else if (numFilledSpaces == pokemonArray.length) {
+            return false; //don't add
+        }
+        else {
             pokemonArray[numFilledSpaces] = nextPokemon;
             return true;
+        }
+    }
+
+    public boolean getDuplicateFound(){
+        return duplicateFound;
     }
 
     /*

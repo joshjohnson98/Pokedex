@@ -47,28 +47,31 @@ public class Main {
                         break;
                     case 2: //add Pokemon
                         //Validate user input below? If so, implement method similar to "option"
-                        System.out.print("Please enter the Pokemon’s Species: ");
+                        System.out.print("\nPlease enter the Pokemon’s Species: ");
                         String species = scan.next();
-                        myPokedex.addPokemon(species);
+                        boolean success = myPokedex.addPokemon(species);
 
-                        //If there is already a Pokemon with the same species name (ignoring casing),
-                        // the output should be “Duplicate”
-
-                        //When the Pokedex is full and a user tries to add a Pokemon,
-                        // the output should be “Max”.
-
-                        //this can return false if it doesn't work
-                        //How should I use this with my two different error messages?
+                        if (!success){
+                            if (myPokedex.getDuplicateFound()){
+                                System.out.println("Duplicate");
+                                //MUST IGNORE CASING WHEN CHECKING FOR DUPLICATES. FIX THIS.
+                                //MAYBE, INSIDE OF POKEDEX, JUST CONVERT TO UPPERCASE WHEN CHECKING
+                                //FOR DUPLICATES
+                            }
+                            else{
+                                System.out.println("Max");
+                            }
+                        }
                         break;
                     case 3: //Check stats
                         //Validate user input below? If so, implement method similar to "option"
-                        System.out.print("Please enter the Pokemon of interest: ");
+                        System.out.print("\nPlease enter the Pokemon of interest: ");
                         //if returns null, print "Missing"
                         //(A Pokemon is missing from the Pokedex)
                         break;
                     case 4: //evolve pokemon
                         //Validate user input below? If so, implement method similar to "option"
-                        System.out.print("Please enter the Pokemon of interest: ");
+                        System.out.print("\nPlease enter the Pokemon of interest: ");
                         //if returns false, print "Missing"
                         //(A Pokemon is missing from the Pokedex)
                         break;
