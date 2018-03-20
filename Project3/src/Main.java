@@ -50,13 +50,9 @@ public class Main {
                         System.out.print("\nPlease enter the Pokemon’s Species: ");
                         String species = scan.next();
                         boolean success = myPokedex.addPokemon(species);
-
                         if (!success){
                             if (myPokedex.getDuplicateFound()){
                                 System.out.println("Duplicate");
-                                //MUST IGNORE CASING WHEN CHECKING FOR DUPLICATES. FIX THIS.
-                                //MAYBE, INSIDE OF POKEDEX, JUST CONVERT TO UPPERCASE WHEN CHECKING
-                                //FOR DUPLICATES
                             }
                             else{
                                 System.out.println("Max");

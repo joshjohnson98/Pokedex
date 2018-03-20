@@ -6,14 +6,6 @@ public class Pokedex implements PokedexInterface{
     //constructor
     public Pokedex(int numPokemon){
         pokemonArray = new Pokemon[numPokemon];
-        //REMOVE BELOW. JUST TO TEST LISTPOKEMON
-        /*
-        Pokemon charizard = new Pokemon("charizard");
-        Pokemon pikachu = new Pokemon("pikachu");
-        pokemonArray[0] = pikachu;
-        pokemonArray[1] = charizard;
-        */
-
     }
 
     //	Return all the names of the Pokemon species in the Pokedex
@@ -53,13 +45,15 @@ public class Pokedex implements PokedexInterface{
             if (pokemonArray[ii] == null){
                 nullCount++;
             }
-            if (pokemonArray[ii]!=null && pokemonArray[ii].getSpecies().equals(species)){
+            //Below: If there is a Pokemon in the position AND the name of that Pokemon in all
+            // caps is equal to the parameter "species" in all caps, then a duplicate was found
+            if (pokemonArray[ii]!=null && pokemonArray[ii].getSpecies().toUpperCase().equals(species.toUpperCase())){
                 duplicateFound = true;
             }
         }
         int numFilledSpaces = pokemonArray.length-nullCount;
 
-        //add to next spot in pokemonArray if not duplicate and array isn't full
+        //add to next spot in pokemonArray if not a duplicate and array isn't full
         if (duplicateFound){
             return false; //don't add
         }
