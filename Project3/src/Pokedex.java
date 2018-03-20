@@ -1,11 +1,41 @@
 public class Pokedex implements PokedexInterface{
 
-    //set size based on first user input
+    private Pokemon[] pokemonArray;
+
+    //constructor
+    public Pokedex(int numPokemon){
+        pokemonArray = new Pokemon[numPokemon];
+        //REMOVE BELOW. JUST TO TEST LISTPOKEMON
+
+        Pokemon charizard = new Pokemon("charizard");
+        Pokemon pikachu = new Pokemon("pikachu");
+        pokemonArray[0] = pikachu;
+        pokemonArray[1] = charizard;
+
+    }
 
     //	Return all the names of the Pokemon species in the Pokedex
     public String[] listPokemon(){
+        //check number of pokemon in array to set String[] length
+        int nullCount = 0;
+        for (int ii = 0; ii <= pokemonArray.length-1; ii++){
+            if (pokemonArray[ii] == null){
+                nullCount++;
+            }
+        }
+        int numFilledSpaces = pokemonArray.length-nullCount;
+        if (numFilledSpaces == 0){
+            return null; //if empty
+        }
+        else {
+            String[] pokemonNames = new String[numFilledSpaces];
 
-        return null; //remove later
+            for (int ii = 0; ii <= numFilledSpaces - 1; ii++) {
+                String currentName = pokemonArray[ii].getSpecies();
+                pokemonNames[ii] = currentName;
+            }
+            return pokemonNames;
+        }
     }
 
     /*
