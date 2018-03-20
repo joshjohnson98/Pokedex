@@ -65,9 +65,15 @@ public class Main {
                         System.out.print("\nPlease enter the Pokemon of interest: ");
                         species = scan.next();
                         int stats[] = myPokedex.checkStats(species);
-
-                        //if returns null, print "Missing"
-                        //(A Pokemon is missing from the Pokedex)
+                        if (stats == null){
+                            System.out.println("Missing");
+                        }
+                        else {
+                            System.out.println("\nThe stats for " + species + " are:");
+                            System.out.println("Attack: " + stats[0]);
+                            System.out.println("Defense: " + stats[1]);
+                            System.out.println("Speed: " + stats[2]);
+                        }
                         break;
                     case 4: //evolve pokemon
                         //Validate user input below? If so, implement method similar to "option"

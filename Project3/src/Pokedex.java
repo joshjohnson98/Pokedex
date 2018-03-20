@@ -79,15 +79,16 @@ public class Pokedex implements PokedexInterface{
         int[] stats = new int[3];
         //First, find what the index of your Pokemon of interest is, using "species"
         int index = getIndex(species);
-        stats[0] = pokemonArray[index].getAttack();
-        stats[1] = pokemonArray[index].getDefense();
-        stats[2] = pokemonArray[index].getSpeed();
-        return stats;
 
-        //IF NULL, FIGURE OUT WHAT TO DO
-
-
-        //return null; //remove later
+        if (index==-1){
+            return null; //Pokemon is missing
+        }
+        else {
+            stats[0] = pokemonArray[index].getAttack();
+            stats[1] = pokemonArray[index].getDefense();
+            stats[2] = pokemonArray[index].getSpeed();
+            return stats;
+        }
     }
 
     //	Sort Pokedex in lexical order (alphabetical) according to the species names.
@@ -113,7 +114,7 @@ public class Pokedex implements PokedexInterface{
                 return ii;
             }
         }
-        return 0;
+        return -1; //Pokemon is missing (checkStats)
     }
 
 
