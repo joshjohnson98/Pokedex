@@ -44,8 +44,25 @@ public class Pokedex implements PokedexInterface{
         successful. If not, return false.
     */
     public boolean addPokemon(String species){
+        Pokemon nextPokemon = new Pokemon(species);
+        //check number of pokemon in array to find next open spot in array
+        int nullCount = 0;
+        for (int ii = 0; ii <= pokemonArray.length-1; ii++){
+            if (pokemonArray[ii] == null){
+                nullCount++;
+            }
+        }
+        int numFilledSpaces = pokemonArray.length-nullCount;
 
-        return false; //remove later
+        //add to next spot in pokemonArray
+
+        //if duplicate, don't add
+            //return false;
+        //else if numFilledSpaces == pokemonArray.length, don't add
+            //return false;
+        //else, add
+            pokemonArray[numFilledSpaces] = nextPokemon;
+            return true;
     }
 
     /*

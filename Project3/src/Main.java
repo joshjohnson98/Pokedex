@@ -46,6 +46,10 @@ public class Main {
                         }
                         break;
                     case 2: //add Pokemon
+                        //Validate user input below? If so, implement method similar to "option"
+                        System.out.print("Please enter the Pokemon’s Species: ");
+                        String species = scan.next();
+                        myPokedex.addPokemon(species);
 
                         //If there is already a Pokemon with the same species name (ignoring casing),
                         // the output should be “Duplicate”
@@ -57,12 +61,14 @@ public class Main {
                         //How should I use this with my two different error messages?
                         break;
                     case 3: //Check stats
-
+                        //Validate user input below? If so, implement method similar to "option"
+                        System.out.print("Please enter the Pokemon of interest: ");
                         //if returns null, print "Missing"
                         //(A Pokemon is missing from the Pokedex)
                         break;
                     case 4: //evolve pokemon
-
+                        //Validate user input below? If so, implement method similar to "option"
+                        System.out.print("Please enter the Pokemon of interest: ");
                         //if returns false, print "Missing"
                         //(A Pokemon is missing from the Pokedex)
                         break;
