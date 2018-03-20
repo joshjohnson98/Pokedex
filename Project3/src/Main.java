@@ -36,24 +36,41 @@ public class Main {
 
             if (option>=1 && option<=6) {
                 switch (option) {
-                    case 1:
+                    case 1: //list Pokemon
                         String pokemonNames[] = myPokedex.listPokemon();
-                        printStringArray(pokemonNames);
+                        if (pokemonNames == null){
+                            System.out.println("Empty");
+                        }
+                        else{
+                            printStringArray(pokemonNames);
+                        }
                         break;
-                    case 2:
+                    case 2: //add Pokemon
+
+                        //If there is already a Pokemon with the same species name (ignoring casing),
+                        // the output should be “Duplicate”
+
+                        //When the Pokedex is full and a user tries to add a Pokemon,
+                        // the output should be “Max”.
+
+                        //this can return false if it doesn't work
+                        //How should I use this with my two different error messages?
+                        break;
+                    case 3: //Check stats
+
+                        //if returns null, print "Missing"
+                        //(A Pokemon is missing from the Pokedex)
+                        break;
+                    case 4: //evolve pokemon
+
+                        //if returns false, print "Missing"
+                        //(A Pokemon is missing from the Pokedex)
+                        break;
+                    case 5: //sort pokemon
+
 
                         break;
-                    case 3:
-
-                        //if null, print "missing"
-                        break;
-                    case 4:
-
-                        break;
-                    case 5:
-
-                        break;
-                    case 6:
+                    case 6: //exit
                         running = false;
                         return;
                 }
@@ -78,10 +95,10 @@ public class Main {
         System.out.print("\nWhat would you like to do? ");
     }
 
-    //Delete or edit. EDIT TO DISPLAY CORRECTLY
+    //Use for listPokemon. Possibly make different variations for other options
     public static void printStringArray(String[] array){
         for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i]);
+            System.out.println(i+1 + ". " + array[i]);
         }
     }
 

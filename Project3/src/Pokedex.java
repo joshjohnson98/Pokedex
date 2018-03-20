@@ -6,11 +6,12 @@ public class Pokedex implements PokedexInterface{
     public Pokedex(int numPokemon){
         pokemonArray = new Pokemon[numPokemon];
         //REMOVE BELOW. JUST TO TEST LISTPOKEMON
-
+        /*
         Pokemon charizard = new Pokemon("charizard");
         Pokemon pikachu = new Pokemon("pikachu");
         pokemonArray[0] = pikachu;
         pokemonArray[1] = charizard;
+        */
 
     }
 
