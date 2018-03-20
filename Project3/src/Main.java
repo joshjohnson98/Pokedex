@@ -6,7 +6,7 @@ public class Main {
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Welcome to your new Pokedex!");
-        System.out.print("How many Pokemon are in your region: ");
+        System.out.print("How many Pokemon are in your region?: "); //Question mark or not?
 
         int numPokemon = scan.nextInt();
 
@@ -15,6 +15,7 @@ public class Main {
         System.out.print("\nYour new Pokedex can hold " + numPokemon + " Pokemon. ");
         System.out.println("Let's start using it!\n");
 
+        String species;
         boolean running = true;
         while (running) {
 
@@ -48,7 +49,7 @@ public class Main {
                     case 2: //add Pokemon
                         //Validate user input below? If so, implement method similar to "option"
                         System.out.print("\nPlease enter the Pokemon’s Species: ");
-                        String species = scan.next();
+                        species = scan.next();
                         boolean success = myPokedex.addPokemon(species);
                         if (!success){
                             if (myPokedex.getDuplicateFound()){
@@ -62,6 +63,9 @@ public class Main {
                     case 3: //Check stats
                         //Validate user input below? If so, implement method similar to "option"
                         System.out.print("\nPlease enter the Pokemon of interest: ");
+                        species = scan.next();
+                        int stats[] = myPokedex.checkStats(species);
+
                         //if returns null, print "Missing"
                         //(A Pokemon is missing from the Pokedex)
                         break;
