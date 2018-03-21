@@ -3,12 +3,22 @@ import java.util.InputMismatchException;
 
 public class Main {
     public static void main(String Args[]){
+        System.out.println("Welcome to your new Pokedex!");
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("Welcome to your new Pokedex!");
-        System.out.print("How many Pokemon are in your region?: "); //Question mark or not?
-
-        int numPokemon = scan.nextInt();
+        int numPokemon = 0;
+        boolean error1;
+        do {
+            System.out.print("How many Pokemon are in your region?: ");
+            error1 = false;
+            try {
+                numPokemon = scan.nextInt();
+            } catch (InputMismatchException somethingWentWrong) {
+                System.out.println("\nThat is not a valid choice. Try again.");
+                error1 = true;
+                scan.next();
+            }
+        }while (error1);
 
         Pokedex myPokedex = new Pokedex(numPokemon);
 
@@ -48,7 +58,7 @@ public class Main {
                         break;
                     case 2: //add Pokemon
                         //Validate user input below? If so, implement method similar to "option"
-                        System.out.print("\nPlease enter the Pokemon’s Species: ");
+                        System.out.print("\nPlease enter the Pokemon's Species: ");
                         species = scan.next();
                         boolean addSuccess = myPokedex.addPokemon(species);
                         if (!addSuccess){
@@ -105,7 +115,7 @@ public class Main {
 
     }
 
-    public static void menu(){
+    private static void menu(){
         System.out.println("1. List Pokemon");
         System.out.println("2. Add Pokemon");
         System.out.println("3. Check a Pokemon's Stats");
@@ -116,7 +126,7 @@ public class Main {
     }
 
     //Use for listPokemon
-    public static void printStringArray(String[] array){
+    private static void printStringArray(String[] array){
         for (int i = 0; i < array.length; i++) {
             System.out.println(i+1 + ". " + array[i]);
         }
