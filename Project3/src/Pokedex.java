@@ -93,7 +93,19 @@ public class Pokedex implements PokedexInterface{
 
     //	Sort Pokedex in lexical order (alphabetical) according to the species names.
     public void sortPokedex(){
-
+        for (int jj = 0; jj <= pokemonArray.length-1; jj++) {
+            for (int ii = 0; ii <= pokemonArray.length - 1; ii++) {
+                if (pokemonArray[ii]!= null && pokemonArray[ii+1]!=null) {
+                    int comparison = pokemonArray[ii].getSpecies().compareTo(pokemonArray[ii+1].getSpecies());
+                    if (comparison > 0) { //if 1st name should be behind the 2nd name in alphabetical order
+                        //switch the names
+                        Pokemon copy = pokemonArray[ii];
+                        pokemonArray[ii] = pokemonArray[ii+1];
+                        pokemonArray[ii+1] = copy;
+                    }
+                }
+            }
+        }
     }
 
 

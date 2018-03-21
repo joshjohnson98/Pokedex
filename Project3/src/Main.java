@@ -88,8 +88,7 @@ public class Main {
                         }
                         break;
                     case 5: //sort pokemon
-
-
+                        myPokedex.sortPokedex();
                         break;
                     case 6: //exit
                         running = false;
@@ -116,7 +115,7 @@ public class Main {
         System.out.print("\nWhat would you like to do? ");
     }
 
-    //Use for listPokemon. Possibly make different variations for other options
+    //Use for listPokemon
     public static void printStringArray(String[] array){
         for (int i = 0; i < array.length; i++) {
             System.out.println(i+1 + ". " + array[i]);
