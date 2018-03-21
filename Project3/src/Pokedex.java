@@ -2,6 +2,7 @@ public class Pokedex implements PokedexInterface{
 
     private Pokemon[] pokemonArray;
     private boolean duplicateFound = false;
+    private boolean maxFound = false;
 
     //constructor
     public Pokedex(int numPokemon){
@@ -58,12 +59,17 @@ public class Pokedex implements PokedexInterface{
             return false; //don't add
         }
         else if (numFilledSpaces == pokemonArray.length) {
+            maxFound = true;
             return false; //don't add
         }
         else {
             pokemonArray[numFilledSpaces] = nextPokemon;
             return true;
         }
+    }
+
+    public boolean getMaxFound(){
+        return maxFound;
     }
 
     public boolean getDuplicateFound(){
@@ -93,6 +99,19 @@ public class Pokedex implements PokedexInterface{
 
     //	Sort Pokedex in lexical order (alphabetical) according to the species names.
     public void sortPokedex(){
+        //Bug Fix: Special characters come before letters in alphabetical order
+            for (int jj = 0; jj <= pokemonArray.length-1; jj++) {
+                for (int ii = 0; ii <= pokemonArray.length - 1; ii++) {
+                    if (ii+1<pokemonArray.length && pokemonArray[ii]!= null && pokemonArray[ii+1]!=null) {
+                        if(pokemonArray[ii].getSpecies().toLowerCase().charAt(0) > pokemonArray[ii+1].getSpecies().toLowerCase().charAt(0)){
+                            //switch the names
+                            Pokemon copy = pokemonArray[ii];
+                            pokemonArray[ii] = pokemonArray[ii+1];
+                            pokemonArray[ii+1] = copy;
+                        }
+                    }
+                }
+            }
         for (int jj = 0; jj <= pokemonArray.length-1; jj++) {
             for (int ii = 0; ii <= pokemonArray.length - 1; ii++) {
                 if (ii+1<pokemonArray.length && pokemonArray[ii]!= null && pokemonArray[ii+1]!=null) {

@@ -62,7 +62,10 @@ public class Main {
                         species = scan.next();
                         boolean addSuccess = myPokedex.addPokemon(species);
                         if (!addSuccess){
-                            if (myPokedex.getDuplicateFound()){
+                            if (myPokedex.getDuplicateFound() && myPokedex.getMaxFound()){
+                                System.out.println("Max");
+                            }
+                            else if (myPokedex.getDuplicateFound()){
                                 System.out.println("Duplicate");
                             }
                             else{
