@@ -19,13 +19,13 @@ public class Pokedex implements PokedexInterface{
             }
         }
         int numFilledSpaces = pokemonArray.length-nullCount;
-        if (numFilledSpaces == 0){
-            return null; //if empty
+        if (numFilledSpaces == 0){ //if array is empty
+            return null;
         }
         else {
             String[] pokemonNames = new String[numFilledSpaces];
 
-            for (int ii = 0; ii <= numFilledSpaces - 1; ii++) {
+            for (int ii = 0; ii <= numFilledSpaces - 1; ii++) {   //only add filled array spaces to pokemonNames
                 String currentName = pokemonArray[ii].getSpecies();
                 pokemonNames[ii] = currentName;
             }
@@ -99,19 +99,6 @@ public class Pokedex implements PokedexInterface{
 
     //	Sort Pokedex in lexical order (alphabetical) according to the species names.
     public void sortPokedex(){
-        //Bug Fix: Special characters come before letters in alphabetical order
-            for (int jj = 0; jj <= pokemonArray.length-1; jj++) {
-                for (int ii = 0; ii <= pokemonArray.length - 1; ii++) {
-                    if (ii+1<pokemonArray.length && pokemonArray[ii]!= null && pokemonArray[ii+1]!=null) {
-                        if(pokemonArray[ii].getSpecies().toLowerCase().charAt(0) > pokemonArray[ii+1].getSpecies().toLowerCase().charAt(0)){
-                            //switch the names
-                            Pokemon copy = pokemonArray[ii];
-                            pokemonArray[ii] = pokemonArray[ii+1];
-                            pokemonArray[ii+1] = copy;
-                        }
-                    }
-                }
-            }
         for (int jj = 0; jj <= pokemonArray.length-1; jj++) {
             for (int ii = 0; ii <= pokemonArray.length - 1; ii++) {
                 if (ii+1<pokemonArray.length && pokemonArray[ii]!= null && pokemonArray[ii+1]!=null) {
@@ -125,8 +112,25 @@ public class Pokedex implements PokedexInterface{
                 }
             }
         }
+        //Bug Fix: Special characters come before letters in alphabetical order
+        //Define special characters
+        String specialCharacters = "`/*!@#$%^&*()\\\"{}_[]|\\\\?/<>,.";
+        for (int jj = 0; jj <= pokemonArray.length-1; jj++) {
+            for (int ii = 0; ii <= pokemonArray.length - 1; ii++) {
+                if (ii+1<pokemonArray.length && pokemonArray[ii]!= null && pokemonArray[ii+1]!=null) {
+                    for (int kk = 0; kk < specialCharacters.length(); kk++) {
+                        if (!(pokemonArray[ii].getSpecies().charAt(0) == specialCharacters.charAt(kk)) && (pokemonArray[ii+1].getSpecies().charAt(0) == specialCharacters.charAt(kk))) {
+                            //if 1st name doesn't start w/ a special character, but the following name does start w/ a special character
+                            //switch the names
+                            Pokemon copy = pokemonArray[ii];
+                            pokemonArray[ii] = pokemonArray[ii + 1];
+                            pokemonArray[ii + 1] = copy;
+                        }
+                    }
+                }
+            }
+        }
     }
-
 
     /*
         Evolve a certain Pokemon by tripling the speed stat,
@@ -149,14 +153,14 @@ public class Pokedex implements PokedexInterface{
         }
     }
 
-    public int getIndex(String species){
+    private int getIndex(String species){
         for (int ii = 0; ii <= pokemonArray.length-1; ii++){
+            //use toUpperCase function to account for casing inconsistencies
             if (pokemonArray[ii]!=null && pokemonArray[ii].getSpecies().toUpperCase().equals(species.toUpperCase())){
                 return ii;
             }
         }
         return -1; //Pokemon is missing (checkStats and evolvePokemon)
     }
-
 
 }

@@ -1,10 +1,11 @@
 public class Pokemon {
-    private String name = "Some name";
-    private int attack = 0;
-    private int defense = 0;
-    private int speed = 0;
+    private String name;
+    private int attack;
+    private int defense;
+    private int speed;
 
-    public Pokemon(String species){ //Should the parameter in constructor be "species"?
+    //constructor. initialize Pokemon attributes
+    public Pokemon(String species){
         name = species;
         attack = (species.length() * 7) + 9;
         defense = (species.length() * 5) + 17;
@@ -16,7 +17,7 @@ public class Pokemon {
         return name;
     }
 
-    public void setSpecies(String species){
+    public void setSpecies(String species){ //not necessary
         name = species;
     }
 

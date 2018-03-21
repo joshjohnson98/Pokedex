@@ -6,6 +6,7 @@ public class Main {
         System.out.println("Welcome to your new Pokedex!");
         Scanner scan = new Scanner(System.in);
 
+        //Check for valid input
         int numPokemon = 0;
         boolean error1;
         do {
@@ -20,6 +21,7 @@ public class Main {
             }
         }while (error1);
 
+        //initialize new Pokedex with user's inputted number of Pokemon in region
         Pokedex myPokedex = new Pokedex(numPokemon);
 
         System.out.print("\nYour new Pokedex can hold " + numPokemon + " Pokemon. ");
@@ -45,6 +47,7 @@ public class Main {
                 }
             }while (error);
 
+            //use switch cases for the 6 user options
             if (option>=1 && option<=6) {
                 switch (option) {
                     case 1: //list Pokemon
@@ -57,7 +60,6 @@ public class Main {
                         }
                         break;
                     case 2: //add Pokemon
-                        //Validate user input below? If so, implement method similar to "option"
                         System.out.print("\nPlease enter the Pokemon's Species: ");
                         species = scan.next();
                         boolean addSuccess = myPokedex.addPokemon(species);
@@ -74,7 +76,6 @@ public class Main {
                         }
                         break;
                     case 3: //Check stats
-                        //Validate user input below? If so, implement method similar to "option"
                         System.out.print("\nPlease enter the Pokemon of interest: ");
                         species = scan.next();
                         int stats[] = myPokedex.checkStats(species);
@@ -89,7 +90,6 @@ public class Main {
                         }
                         break;
                     case 4: //evolve pokemon
-                        //Validate user input below? If so, implement method similar to "option"
                         System.out.print("\nPlease enter the Pokemon of interest: ");
                         species = scan.next();
                         boolean evolveSuccess = myPokedex.evolvePokemon(species);
